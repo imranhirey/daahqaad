@@ -86,33 +86,9 @@ open source and accessible data">
         <div class="u-border-3 u-border-palette-1-base u-line u-line-horizontal u-line-1"></div>
         <div class="u-clearfix u-disable-padding u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
           <div class="u-layout">
-            <div class="u-layout-row">
-              <div class="u-align-left u-container-style u-layout-cell u-left-cell u-similar-fill u-size-20 u-size-20-md u-layout-cell-1">
-                <div class="u-container-layout u-valign-top u-container-layout-1">
-                  <img class="u-expanded-width u-image u-image-1" src="images/ed81ebf732fec2e03d496bca9314f258.png" imgwidth="370" imgheight="220">
-                  <h3 class="u-heading-font u-text u-text-3">GREAT PROJECTS</h3>
-                  <h4 class="u-heading-font u-text u-text-grey u-text-4">19 March 2018 / Super User</h4>
-                  <p class="u-text u-text-font u-text-5">Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
-                  <a href="https://nicepage.com/wysiwyg-html-editor" class="u-border-1 u-custom u-link u-text-black u-link-1">read more</a>
-                </div>
-              </div>
-              <div class="u-align-left u-container-style u-layout-cell u-similar-fill u-size-20 u-size-20-md u-layout-cell-2">
-                <div class="u-container-layout u-valign-top u-container-layout-2">
-                  <img class="u-expanded-width u-image u-image-2" src="images/fcc6b22e1ce851ad1ffee68a386f9d89.png" imgwidth="370" imgheight="220">
-                  <h3 class="u-heading-font u-text u-text-6">GREAT PROJECTS</h3>
-                  <h4 class="u-heading-font u-text u-text-grey u-text-7">19 March 2018 / Super User</h4>
-                  <p class="u-text u-text-font u-text-8">Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
-                  <a href="https://nicepage.com/c/sports-website-templates" class="u-border-1 u-custom u-link u-text-black u-link-2">read more</a>
-                </div>
-              </div>
-              <div class="u-align-left u-container-style u-layout-cell u-right-cell u-similar-fill u-size-20 u-size-20-md u-layout-cell-3">
-                <div class="u-container-layout u-valign-top u-container-layout-3">
-                  <img class="u-expanded-width u-image u-image-3" src="images/47e9872033581723cf1877c5bd01f314.png" imgwidth="370" imgheight="220">
-                  <h3 class="u-heading-font u-text u-text-9">GREAT PROJECTS</h3>
-                  <h4 class="u-heading-font u-text u-text-grey u-text-10">19 March 2018 / Super User</h4>
-                  <p class="u-text u-text-font u-text-11">Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
-                  <a href="https://nicepage.com/c/real-estate-html-templates" class="u-border-1 u-custom u-link u-text-black u-link-3">read more</a>
-                </div>
+            <div class="u-layout-row posts">
+              
+              
               </div>
             </div>
           </div>
@@ -126,16 +102,34 @@ open source and accessible data">
         <p class="u-small-text u-text u-text-variant u-text-1">all right reserved @daahqaad.com<br>
         </p>
       </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
-        <span>Website Templates</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
-      </p>
-      <a class="u-link" href="" target="_blank">
-        <span>Website Builder Software</span>
-      </a>. 
-    </section>
+  
   </body>
+  <script>
+    const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '7e068fe2b2msh58741add0435bdfp11ca43jsn030fb0c4633f',
+		'X-RapidAPI-Host': 'free-news.p.rapidapi.com'
+	}
+};
+
+fetch('https://free-news.p.rapidapi.com/v1/search?q=data&lang=en', options)
+	.then(response => response.json())
+	.then(response => {
+    console.log(response.articles)
+    for (let i=0;i<response.articles.length;i++){
+      let htl= `<div class="u-align-left u-container-style u-layout-cell u-left-cell u-similar-fill u-size-20 u-size-20-md u-layout-cell-1">
+                <div class="u-container-layout u-valign-top u-container-layout-1">
+                  <img class="u-expanded-width u-image u-image-1" src="${response.articles[i].media}" imgwidth="370" imgheight="220">
+                  <h3 class="u-heading-font u-text u-text-3">${response.articles[i].title}</h3>
+                  <h4 class="u-heading-font u-text u-text-grey u-text-4">19 March 2018 / Super User</h4>
+                  <p class="u-text u-text-font u-text-5">Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
+                  <a href="https://nicepage.com/wysiwyg-html-editor" class="u-border-1 u-custom u-link u-text-black u-link-1">read more</a>
+                </div>`
+                $('.posts').append(htl)
+    }
+    
+  })
+	.catch(err => console.error(err));
+  </script>
 </html>
