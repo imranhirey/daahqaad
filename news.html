@@ -81,7 +81,7 @@ open source and accessible data">
       </div></header>
     <section class="u-align-center u-clearfix u-white u-section-1" id="carousel_da46">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <h3 class="u-heading-font u-text u-text-palette-1-base u-text-1">THE BLOG</h3>
+        <h3 class="u-heading-font u-text u-text-palette-1-base u-text-1">DAAHQAAD DATA RELATED NEWS</h3>
         <h2 class="u-heading-font u-text u-text-2">LATEST NEWS</h2>
         <div class="u-border-3 u-border-palette-1-base u-line u-line-horizontal u-line-1"></div>
         <div class="u-clearfix u-disable-padding u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
@@ -105,6 +105,15 @@ open source and accessible data">
   
   </body>
   <script>
+    let getauthor=(author)=>{
+      console.log(author)
+      if (author==null){
+        return 'daahqaad research center'
+      }
+      else{
+        return author
+      }
+    }
     const options = {
 	method: 'GET',
 	headers: {
@@ -122,9 +131,9 @@ fetch('https://free-news.p.rapidapi.com/v1/search?q=data&lang=en', options)
                 <div class="u-container-layout u-valign-top u-container-layout-1">
                   <img class="u-expanded-width u-image u-image-1" src="${response.articles[i].media}" imgwidth="370" imgheight="220">
                   <h3 class="u-heading-font u-text u-text-3">${response.articles[i].title}</h3>
-                  <h4 class="u-heading-font u-text u-text-grey u-text-4">19 March 2018 / Super User</h4>
-                  <p class="u-text u-text-font u-text-5">Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
-                  <a href="https://nicepage.com/wysiwyg-html-editor" class="u-border-1 u-custom u-link u-text-black u-link-1">read more</a>
+                  <h4 class="u-heading-font u-text u-text-grey u-text-4">${response.articles[i].published_date} /${getauthor(response.articles[i].author)} }</h4>
+                  <p class="u-text u-text-font u-text-5">${response.articles[i].summary}</p>
+                  <a href="${response.articles[i].link}" class="u-border-1 u-custom u-link u-text-black u-link-1">read more</a>
                 </div>`
                 $('.posts').append(htl)
     }
