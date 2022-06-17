@@ -135,7 +135,16 @@ open source and accessible data">
 fetch('https://free-news.p.rapidapi.com/v1/search?q=data&lang=en', options)
 	.then(response => response.json())
 	.then(response => {
-    console.log(response.articles)
+    let ht= `<div class="u-align-left u-container-style u-layout-cell u-left-cell u-similar-fill u-size-20 u-size-20-md u-layout-cell-1">
+                <div class="u-container-layout u-valign-top u-container-layout-1">
+                  <img class="u-expanded-width u-image u-image-1" src="https://ak.picdn.net/shutterstock/videos/16704820/thumb/1.jpg" imgwidth="370" imgheight="220">
+                  <h3 class="u-heading-font u-text u-text-3">Somalia Bans ‘Lightyear,’ Disney Film with Same-Sex Kiss</h3>
+                  <h4 class="u-heading-font u-text u-text-grey u-text-4">17/06/20122 /imran nur hirey</h4>
+                  <p class="u-text u-text-font u-text-5">Toy Story spin-off Lightyear will not be released in various Middle East countries, including Saudi Arabia and  somalia due to the inclusion of a same-se*x kiss, the latest in a string of Hollywood films that have been banned in the Middle East over LGBTQ+ content.
+According to the Hollywood Reporter, the scene in question involved a space ranger called Alisha (voiced by Uzo Aduba) and her partner who greet each other with a kiss on the lips. Variety reports that Lightyear was not submitted to censors in Saudi Arabia, as it was anticipated it would not pass due to the country’s total prohibition of same-se*x relationships. However, the Pixar film was submitted to censors in the comparatively more liberal somalia, but the film’s licence was revoked after complaints on social media.</p>
+                  <a href="https://www.facebook.com/imrannur.hirey/" class="u-border-1 u-custom u-link u-text-black u-link-1">read more</a>
+                </div>`
+                $('.posts').append(ht)
     for (let i=0;i<response.articles.length;i++){
       let htl= `<div class="u-align-left u-container-style u-layout-cell u-left-cell u-similar-fill u-size-20 u-size-20-md u-layout-cell-1">
                 <div class="u-container-layout u-valign-top u-container-layout-1">
