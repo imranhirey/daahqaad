@@ -7,7 +7,7 @@ if("serviceWorker" in navigator){
             
         })
         .catch((er)=>{
-            console.log(er)
+            console.log('can not register')
         })
     })
 
